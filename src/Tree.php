@@ -1,5 +1,5 @@
 <?php
-namespace dreamboy\tool;
+namespace Dreamboy\Tool;
 
 /**
  * Class Tree
