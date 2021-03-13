@@ -1,6 +1,9 @@
 <?php
-namespace tool;
+namespace Dreamboy\Tool;
 
+/**
+ * 字符串处理
+ */
 class String
 {
 
@@ -141,10 +144,12 @@ class String
                 $chars = 'ABCDEFGHIJKMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789' . $addChars;
                 break;
         }
+        
         if ($len > 10) {
-//位数过长重复字符串一定次数
+            //位数过长重复字符串一定次数
             $chars = 1 == $type ? str_repeat($chars, $len) : str_repeat($chars, 5);
         }
+        
         if (4 != $type) {
             $chars = str_shuffle($chars);
             $str   = substr($chars, 0, $len);
@@ -154,6 +159,7 @@ class String
                 $str .= self::msubstr($chars, floor(mt_rand(0, mb_strlen($chars, 'utf-8') - 1)), 1, 'utf-8', false);
             }
         }
+        
         return $str;
     }
 
@@ -190,8 +196,7 @@ class String
     /**
      *  带格式生成随机字符 支持批量生成
      *  但可能存在重复
-     * @param string $format 字符格式
-     *     # 表示数字 * 表示字母和数字 $ 表示字母
+     * @param string $format 字符格式 # 表示数字 * 表示字母和数字 $ 表示字母
      * @param integer $number 生成数量
      * @return string | array
      */
@@ -218,8 +223,10 @@ class String
                         break;
                 }
             }
+            
             $str[] = $strtemp;
         }
+        
         return 1 == $number ? $strtemp : $str;
     }
 
@@ -243,6 +250,7 @@ class String
             //如果编码相同或者非字符串标量则不转换
             return $string;
         }
+        
         if (is_string($string)) {
             if (function_exists('mb_convert_encoding')) {
                 return mb_convert_encoding($string, $to, $from);
