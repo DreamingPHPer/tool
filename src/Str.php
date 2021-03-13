@@ -4,7 +4,7 @@ namespace Dreamboy\Tool;
 /**
  * 字符串处理
  */
-class String
+class Str
 {
 
     /**
